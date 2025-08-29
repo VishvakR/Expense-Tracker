@@ -3,7 +3,7 @@
 
 @theme {
   --font-primary: 'Poppins', sans-serif;
-  --color-primary: #875CF5;
+  --color-primary: #5cf580;
 }
 
 @layer base {
@@ -15,4 +15,12 @@
     background-color: #FCFBFC;
     overflow-x: hidden;
   }
+}
+
+.input-box {
+  @apply w-full flex justify-between gap-3 text-sm text-black bg-slate-100 rounded px-4 py-3 mb-4 mt-3 border border-slate-200 outline-none
+}
+
+.primary-btn {
+  @apply w-full bg-green-400 text-white text-sm font-medium shadow-lg shadow-green-600/5 p-[10px] rounded-md my-1 hover:bg-green-600/15 hover:text-green-500
 }
