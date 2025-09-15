@@ -3,14 +3,21 @@ import AuthLayout from "../../components/layout/AuthLayout";
 import { useNavigate, Link } from "react-router-dom";
 import Input from "../../components/input/Input";
 import { isValidEmail, isValidPassword } from "../../utils/helper";
+import axiosInstance from "../../utils/axiosInstance";
+import { API_PATHS } from "../../utils/apiPath";
+import { UserContext } from "../../context/userContext";
 
 function Login() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [error, setError] = React.useState("");
+
+  const { updateUser } = React.useContext(UserContext);
+
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
+
     e.preventDefault();
 
     if(!isValidEmail(email)){
@@ -23,12 +30,32 @@ function Login() {
       return;
     }
 
-    if (!isValidPassword(password)) {
-      setError("Password must be at least 8 characters long, include uppercase, lowercase, number, and special character");
-      return;
-    }
+    // if (!isValidPassword(password)) {
+    //   setError("Password must be at least 8 characters long, include uppercase, lowercase, number, and special character");
+    //   return;
+    // }
     setError("");
-  }
+
+    try {
+      const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, {
+        email,
+        password
+      });
+
+      const { token, user } = response.data;
+      if (token) {
+        localStorage.setItem("token", token);
+        updateUser(user);
+        navigate("/dashboard");
+      }
+    } catch (err) {
+      if (err.response && err.response.data.message) {
+        setError(err.response.data.message);
+      } else {
+        setError("Something went wrong. Please try again later.");
+      }
+    }
+  };
 
   return (
     <AuthLayout>
