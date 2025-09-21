@@ -1,6 +1,7 @@
 import React from "react";
 import Graph_logo from "../../assets/images/graph1.jpg"
 import { LuTrendingUpDown } from "react-icons/lu"
+import loginLogo from "../../assets/images/loginLogo.svg"
 
 function AuthLayout( {children} ) {
   return (
@@ -13,7 +14,7 @@ function AuthLayout( {children} ) {
         <div className="hidden md:block w-[40vw] bg-green-50 bg-auth-bg-img bg-cover bg-no-repeat bg-center overflow-hidden p-8 relative">
 
           <div className="w-48 h-48 rounded-[40px] bg-green-500 absolute -top-7 -left-5" />
-          <div className="w-48 h-56 rounded-[40px] border-[20px] border-green-500 absolute top-[30%] -right-10" />
+          <div className="w-82 h-56 rounded-[40px] border-[20px] border-green-500 absolute top-[20%] -right-10 bg-cover bg-no-repeat bg-center overflow-hidden" style={{ backgroundImage: `url(${loginLogo})` }} />
           <div className="w-48 h-48 rounded-[40px] bg-green-500 absolute -bottom-7 -left-5" />
 
           <div className="grid grid-cols-1 z-20">

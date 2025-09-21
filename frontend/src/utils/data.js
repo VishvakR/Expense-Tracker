@@ -28,7 +28,7 @@ export const menuItems = [
         id : "06",
         label : "logout",
         icon : LuLogOut,
-        link : "/logout",
+        link : "logout",
     }
 
 ]
