@@ -1,5 +1,4 @@
-# Expense Tracker — Fullstack (React • Node • Express • MongoDB • JWT)
-
+# Expense Tracker — Fullstack Application 
 A simple, secure expense tracker web app built with a React frontend and a Node/Express + MongoDB backend.
 
 > Includes: auth (signup/login), protected routes, expense & income management, file uploads (receipts), and a clean componentized React UI.
