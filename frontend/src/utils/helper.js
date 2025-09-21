@@ -1,3 +1,4 @@
+import moment from "moment";
 import { data } from "react-router-dom";
 
 export const isValidEmail = (email) => {
@@ -45,5 +46,25 @@ export const prepareExpenseBarChart = (data = []) => {
     amount : items?.amount
   }))
 
+  return chartData
+}
+
+export const prepareIncomeBarChartData = (data = []) => {
+  const sortedData = [...data].sort((a, b) => new Date(a.date) - new Date(b.date))
+  const chartData = sortedData.map((items) => ({
+    month: moment(items?.date).format('Do MMM'),
+    amount : items?.amount,
+    source: items?.source
+  }))
+  return chartData
+}
+
+export const prepareExpenseLineChartData = (data = []) => {
+    const sortedData = [...data].sort((a, b) => new Date(a.date) - new Date(b.date))
+    const chartData = sortedData.map((items) => ({
+      month: moment(items?.date).format('Do MMM'),
+      amount : items?.amount,
+      category: items?.category
+    }))
   return chartData
 }
